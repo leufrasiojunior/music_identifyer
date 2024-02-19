@@ -1,20 +1,16 @@
 from pydub import AudioSegment
-from main import *
 
-#
+from checkReqs import *
+
+
 maxCutSeconds = 40
 
 
-def get_duration_pydub(file_path):
-    global audio_file
+def convert_file_to_send(file_path, filename):
     audio_file = AudioSegment.from_file(file_path)
     duration = audio_file.duration_seconds
-    return duration
-
-
-file_path = "test.mp3"
-duration = get_duration_pydub(file_path)
-startCut = int((int(duration) // 4)) * 1000
-endCut = startCut + (maxCutSeconds * 1000)
-editedSong = audio_file[int(startCut) : int(endCut)]
-editedSong.export("editedSong.mp3", format="mp3")
+    # return duration
+    startCut = int((int(duration) // 4)) * 1000
+    endCut = startCut + (maxCutSeconds * 1000)
+    editedSong = audio_file[int(startCut) : int(endCut)]
+    editedSong.export(f"{editedFolder}/{filename}.mp3", format="mp3")
