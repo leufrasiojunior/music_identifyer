@@ -2,7 +2,6 @@ from tkinter import filedialog, messagebox
 import os, shutil
 
 from checkReqs import *
-from curses import *
 from cutFiles import convert_file_to_send
 
 # Ask the user to upload music files to recognize
@@ -23,3 +22,7 @@ allmusicFiles = os.listdir(folder_destiny)
 for musicFile in allmusicFiles:
     musicToEdit = os.path.join(folder_destiny, musicFile)
     convert_file_to_send(musicToEdit, musicFile)
+
+# remove files after cut segments
+for fileRemove in allmusicFiles:
+    os.remove(os.path.join(folder_destiny, fileRemove))

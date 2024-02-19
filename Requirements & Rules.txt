@@ -1,0 +1,9 @@
+#Requeriments
+ffmpeg
+
+#Rules
+
+[x]Send the files to the upload folder, for better control of the files
+[x]Fixed extract to 30seconds from file to recognize song
+[x] Remove all files uploaded before cut segments (Preferably after completing the entire process, not implemented)
+Progress bar for converting files
