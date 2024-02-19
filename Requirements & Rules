@@ -1,0 +1,5 @@
+#Requeriments
+ffmpeg
+
+#Rules
+Fixed extract to 30seconds from file to recognize song
