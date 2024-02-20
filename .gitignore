@@ -3,3 +3,4 @@ music_test/
 editedFiles/
 __pycache__/
 .venv/
+.env

@@ -13,4 +13,4 @@ def convert_file_to_send(file_path, filename):
     startCut = int((int(duration) // 4)) * 1000
     endCut = startCut + (maxCutSeconds * 1000)
     editedSong = audio_file[int(startCut) : int(endCut)]
-    editedSong.export(f"{editedFolder}/{filename}.mp3", format="mp3")
+    editedSong.export(f"{editedFolder}/{filename}", format="mp3")

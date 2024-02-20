@@ -6,4 +6,34 @@ ffmpeg
 [x]Send the files to the upload folder, for better control of the files
 [x]Fixed extract to 30seconds from file to recognize song
 [x] Remove all files uploaded before cut segments (Preferably after completing the entire process, not implemented)
+Remover a remoção dos arquivos
+Enviar os arquivos de tamanho total
+Já fazer a pesquisa e editar a TAG ID3 
+Obter a resposta do servidor, se for 500 tentar novamente.
 Progress bar for converting files
+
+##Salvar a imagem de capa
+
+import eyed3
+import urllib.request
+
+audiofile = eyed3.load("D:\\tmp\\tmp_mp3\\track_example.mp3")
+
+audiofile.initTag(version=(2, 3, 0))  # version is important
+# Other data for demonstration purpose only (from docs)
+audiofile.tag.artist = "Token Entry"
+audiofile.tag.album = "Free For All Comp LP"
+audiofile.tag.album_artist = "Various Artists"
+audiofile.tag.title = "The Edge"
+
+# Read image from local file (for demonstration and future readers)
+with open("D:\\tmp\\tmp_covers\\cover_2021-03-13.jpg", "rb") as image_file:
+    imagedata = image_file.read()
+audiofile.tag.images.set(3, imagedata, "image/jpeg", u"cover")
+audiofile.tag.save()
+
+# Get image from the Internet
+response = urllib.request.urlopen("https://example.com/your-picture-here.jpg")
+imagedata = response.read()
+audiofile.tag.images.set(3, imagedata, "image/jpeg", u"cover")
+audiofile.tag.save()
